@@ -10,9 +10,9 @@ spec:
         app: helloworld
     spec:
       volumes:
-      - name: hello-world
+      - name: helloworld
         configMap:
-          name: hello-world
+          name: helloworld
       containers:
       - name: helloworld
         image: burdz/helloworld
