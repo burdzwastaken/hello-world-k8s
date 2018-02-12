@@ -9,6 +9,10 @@ spec:
       labels:
         app: helloworld
     spec:
+      volumes:
+      - name: hello-world
+        configMap:
+          name: hello-world
       containers:
       - name: helloworld
         image: burdz/helloworld
@@ -21,3 +25,15 @@ spec:
                 key: container.port
         ports:
         - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
