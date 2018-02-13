@@ -5,3 +5,4 @@ metadata:
   namespace: default
 data:
   container.port: "8080"
+  container.string: "testv2"
