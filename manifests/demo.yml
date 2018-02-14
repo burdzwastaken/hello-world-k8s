@@ -1,3 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world-k8s-config
+  namespace: default
+data:
+  NEW_FEATURE: "false"
+
+---
+
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
@@ -31,3 +41,21 @@ spec:
         envFrom:
         - configMapRef:
             name: hello-world-k8s-config
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-k8s
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    source: demo-v2
+    app: spinnaker
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
