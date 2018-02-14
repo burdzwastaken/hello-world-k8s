@@ -3,6 +3,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: hello-world-k8s
+  namespace: default
 spec:
   type: LoadBalancer
   selector:
