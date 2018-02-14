@@ -1,2 +1,5 @@
-# hello-world-k8s
-test for v2 provider
+# Sample webserver for Spinnaker v2 provider
+
+Source to prod Kubernetes Spinnaker artifact code is staged here. The point is
+to provide a simple webserver that can have its colors/content quickly tweaked
+during a demo or tutorial.

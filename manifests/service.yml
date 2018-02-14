@@ -1,0 +1,15 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sample-v2-spinnaker-app
+spec:
+  type: LoadBalancer
+  selector:
+    source: demo-v2
+    app: spinnaker
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+---

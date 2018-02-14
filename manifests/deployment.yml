@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: sample-v2-spinnaker-app
+  labels:
+    source: demo-v2
+    app: spinnaker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      source: demo-v2
+      app: spinnaker
+  template:
+    metadata:
+      labels:
+        source: demo-v2
+        app: spinnaker
+    spec:
+      containers:
+      - name: primary
+        image: will-include
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+        envFrom:
+        - configMapRef:
+            name: sample-v2-spinnaker-config
+---
