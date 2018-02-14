@@ -2,7 +2,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: sample-v2-spinnaker-app
+  name: hello-world-k8s
   labels:
     source: demo-v2
     app: spinnaker
@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: primary
-        image: will-include
+        image: index.docker.io/burdzwastaken/hello-world-k8s
         ports:
         - containerPort: 8000
         readinessProbe:
@@ -29,5 +29,5 @@ spec:
             port: 8000
         envFrom:
         - configMapRef:
-            name: sample-v2-spinnaker-config
+            name: hello-world-k8s-config
 ---

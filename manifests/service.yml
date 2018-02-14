@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: sample-v2-spinnaker-app
+  name: hello-world-k8s
 spec:
   type: LoadBalancer
   selector:
