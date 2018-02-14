@@ -20,7 +20,8 @@ spec:
     spec:
       containers:
       - name: primary
-        image: index.docker.io/burdzwastaken/hello-world-k8s
+        image: index.docker.io/burdz/hello-world-k8s
+        imagePullPolicy: Always
         ports:
         - containerPort: 8000
         readinessProbe:
