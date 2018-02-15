@@ -18,6 +18,9 @@ spec:
         app: spinnaker
     spec:
       volumes:
+      - name: hello-world-k8s-config
+        configMap:
+          name: hello-world-k8s-config
       containers:
       - name: primary
         image: index.docker.io/burdz/hello-world-k8s
