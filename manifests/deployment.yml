@@ -2,7 +2,6 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: hello-world-k8s
-  namespace: default
   labels:
     source: demo-v2
     app: spinnaker
