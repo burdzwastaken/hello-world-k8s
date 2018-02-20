@@ -1,0 +1,66 @@
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world-k8s-config
+data:
+  NEW_FEATURE: "false"
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world-k8s
+  labels:
+    source: demo-v2
+    app: spinnaker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      source: demo-v2
+      app: spinnaker
+  template:
+    metadata:
+      labels:
+        source: demo-v2
+        app: spinnaker
+    spec:
+      volumes:
+      - name: hello-world-k8s-config
+        configMap:
+          name: hello-world-k8s-config
+      containers:
+      - name: primary
+        image: index.docker.io/burdz/hello-world-k8s
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+        env:
+          - name: NEW_FEATURE
+            valueFrom:
+              configMapKeyRef:
+                name: hello-world-k8s-config
+                key: data.NEW_FEATURE
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-k8s
+spec:
+  type: LoadBalancer
+  selector:
+    source: demo-v2
+    app: spinnaker
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
