@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: hello-world-k8s-config
 data:
-  NEW_FEATURE: "false"
+  NEW_FEATURE: "true"
