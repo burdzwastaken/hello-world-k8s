@@ -28,9 +28,6 @@ spec:
           httpGet:
             path: /
             port: 8000
-        env:
-          - name: NEW_FEATURE
-            valueFrom:
-              configMapKeyRef:
-                name: hello-world-k8s-config
-                key: data.NEW_FEATURE
+        envFrom:
+        - configMapRef:
+            name: hello-world-k8s-config
