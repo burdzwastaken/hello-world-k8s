@@ -4,4 +4,4 @@ metadata:
   namespace: ${ parameters.namespace }
   name: hello-world-k8s-config
 data:
-  NEW_FEATURE: "true"
+  NEW_FEATURE: "false"
