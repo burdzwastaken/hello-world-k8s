@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: hello-world-k8s
+  namespace: ${ parameters.namespace }
   labels:
     source: demo-v2
     app: spinnaker
