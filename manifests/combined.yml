@@ -12,7 +12,7 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: hello-world-k8s
-  namespace: default
+  namespace: ${ parameters.namespace }
   labels:
     source: demo-v2
     app: spinnaker
@@ -48,7 +48,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: hello-world-k8s
-  namespace: default
+  namespace: ${ parameters.namespace }
 spec:
   type: LoadBalancer
   selector:
