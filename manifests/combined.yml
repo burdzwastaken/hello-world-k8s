@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: hello-world-k8s-config
-  namespace: default
+  namespace: ${ parameters.namespace }
 data:
   NEW_FEATURE: "true"
 
