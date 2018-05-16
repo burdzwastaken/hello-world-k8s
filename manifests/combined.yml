@@ -4,7 +4,7 @@ metadata:
   name: hello-world-k8s-config
   namespace: default
 data:
-  NEW_FEATURE: "false"
+  NEW_FEATURE: "true"
 
 ---
 
